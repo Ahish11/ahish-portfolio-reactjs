@@ -3,12 +3,12 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 
 const navLinks = [
-  { label: "Home", href: "home" },
-  { label: "Skills", href: "skills" },
-  { label: "Work Experience", href: "experience" },
-  { label: "About", href: "about" },
-  { label: "Projects", href: "projects" },
-  { label: "Contact Me", href: "contact" },
+  { label: "Home", href: "#home" },
+  { label: "Skills", href: "#skills" },
+  { label: "Work Experience", href: "#experience" },
+  // { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact Me", href: "#contact" },
 ];
 
 const Navbar = () => {
