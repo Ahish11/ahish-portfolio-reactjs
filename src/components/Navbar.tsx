@@ -3,30 +3,47 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Skills", href: "#skills" },
-  { label: "Work Experience", href: "#experience" },
-  // { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact Me", href: "#contact" },
+  { label: "Home", view: "home" },
+  { label: "Skills", view: "skills" },
+  { label: "Work Experience", view: "experience" },
+  { label: "Projects", view: "projects" },
+  { label: "Contact Me", view: "contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  sectionRefs: {
+    [key: string]: React.RefObject<HTMLDivElement | null>;
+  };
+}
+
+const Navbar = ({ sectionRefs }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isDark, toggle } = useTheme();
 
+  const scrollToSection = (view: string) => {
+    const targetRef = sectionRefs[view];
+
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-      {/* Desktop */}
+      {/* Desktop Navigation */}
       <ul className="hidden md:flex items-center gap-1 bg-card/90 backdrop-blur-md border border-border rounded-full px-2 py-2">
         {navLinks.map((link) => (
-          <li key={link.href}>
-            <a
-              href={link.href}
+          <li key={link.view}>
+            <button
+              onClick={() => scrollToSection(link.view)}
               className="text-sm font-medium text-muted-foreground hover:text-primary px-4 py-2 rounded-full transition-colors hover:bg-primary/10"
             >
               {link.label}
-            </a>
+            </button>
           </li>
         ))}
         <li>
@@ -58,19 +75,18 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden absolute top-14 left-1/2 -translate-x-1/2 bg-card/95 backdrop-blur-md border border-border rounded-2xl px-6 py-4 min-w-[220px] animate-fade-in-up">
           <ul className="flex flex-col gap-3">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsOpen(false)}
+              <li key={link.view}>
+                <button
+                  onClick={() => scrollToSection(link.view)}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors block w-full text-left py-1"
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

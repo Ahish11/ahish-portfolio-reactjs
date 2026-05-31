@@ -10,13 +10,13 @@ const projects = [
   //   github: "https://github.com/Ahish11/ahish-portfolio-reactjs",
   //   // live: "#",
   // },
-  {
-    title: "Portfolio",
-    description: "Build my own portfolio",
-    tags: ["Reactjs", "Javascript", "Tailwind CSS", "Typescript", "HTML"],
-    github: "https://github.com/Ahish11/contactsApp_meanstack",
-    // live: "#",
-  },
+  // {
+  //   title: "Portfolio",
+  //   description: "Build my own portfolio",
+  //   tags: ["Reactjs", "Javascript", "Tailwind CSS", "Typescript", "HTML"],
+  //   github: "https://github.com/Ahish11/contactsApp_meanstack",
+  //   // live: "#",
+  // },
   {
     title: "Contactly",
     description:
@@ -48,16 +48,16 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section-padding section-transition">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto flex items-center justify-center flex-col">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           Personal <span className="text-gradient">Projects</span>
         </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-lg mx-auto">
+        {/* <p className="text-muted-foreground text-center mb-12 max-w-lg mx-auto">
           Side projects I've built to explore new technologies and solve real
           problems.
-        </p>
+        </p> */}
 
-        <div ref={ref} className="grid sm:grid-cols-2 gap-6 stagger-children">
+        <div ref={ref} className="max-w-[700px] stagger-children">
           {projects.map((project) => (
             <div
               key={project.title}
@@ -93,7 +93,7 @@ const Projects = () => {
                   aria-label="Live Demo"
                 >
                   <ExternalLink size={18} />
-                </a> */}   
+                </a> */}
               </div>
             </div>
           ))}

@@ -5,7 +5,7 @@ const experiences = [
     role: "Frontend Developer (Angular)",
     company: "Adamsbridge Services Pvt Ltd",
     period: "Nov 2023 — Present",
-    project: "CRM & Internal Workflow Platform",
+    project: "CRM Platform",
     description:
       "Worked on modernizing and scaling enterprise CRM and workflow management applications. Led Angular migration from v17 to v21, migrated UI architecture to PrimeNG v19 with Tailwind CSS, reduced bundle size by 20%, and improved page load performance by 30% through frontend optimization strategies and reusable component architecture.",
   },
