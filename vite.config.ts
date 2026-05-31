@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const isDev = process.env.NODE_ENV !== "production";
 
 // https://vitejs.dev/config/
@@ -16,7 +18,7 @@ export default defineConfig({
   },
   // We use a plain array so Cloudflare's bot can read and modify it natively.
   // Vite automatically ignores the "false" value in production.
-  plugins: [react(), isDev && componentTagger()],
+  plugins: [react(), isDev && componentTagger(), cloudflare()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
